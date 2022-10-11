@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/static_objects/grass_type_1/Green_Light.material" type="Material" id=1]
+[ext_resource path="res://scenes/player/bunny.tscn" type="PackedScene" id=2]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 100, 100 )
@@ -23,3 +24,5 @@ material/0 = SubResource( 2 )
 [node name="collision" type="CollisionShape" parent="floor"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shape = SubResource( 3 )
+
+[node name="Bunny" parent="." instance=ExtResource( 2 )]
