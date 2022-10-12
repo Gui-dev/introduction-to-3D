@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/characters/bunny_with_a_gun/Main_Light.material" type="Material" id=1]
 [ext_resource path="res://assets/characters/bunny_with_a_gun/White.material" type="Material" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://assets/characters/bunny_with_a_gun/Gun_Grey.material" type="Material" id=6]
 [ext_resource path="res://assets/characters/bunny_with_a_gun/EyeColor.material" type="Material" id=7]
 [ext_resource path="res://scripts/player/bunny.gd" type="Script" id=8]
-[ext_resource path="res://scripts/move_state.gd" type="Script" id=9]
+[ext_resource path="res://scripts/player/move_state.gd" type="Script" id=9]
+[ext_resource path="res://scripts/player/camera_arm.gd" type="Script" id=10]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Character_Gun_Cube003"
@@ -4035,7 +4036,7 @@ bones/28/enabled = true
 bones/28/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="character_with_gun/CharacterArmature/Skeleton"]
-transform = Transform( -0.578497, -0.53607, -0.614793, 0.116997, -0.800453, 0.587866, -0.80725, 0.26815, 0.525778, -0.896075, 0.535238, 0.073766 )
+transform = Transform( -0.578497, -0.53607, -0.614793, 0.116997, -0.800454, 0.587866, -0.807251, 0.26815, 0.525779, -0.896076, 0.535238, 0.0737655 )
 bone_name = "Fist.R"
 
 [node name="Gun" type="MeshInstance" parent="character_with_gun/CharacterArmature/Skeleton/BoneAttachment"]
@@ -4084,8 +4085,10 @@ shape = SubResource( 25 )
 
 [node name="camera_arm" type="SpringArm" parent="."]
 transform = Transform( -1, -2.26267e-08, 8.44439e-08, 0, 0.965926, 0.258819, -8.74228e-08, 0.258819, -0.965926, 0, 0, 0 )
+collision_mask = 0
 spring_length = 7.0
 margin = 2.0
+script = ExtResource( 10 )
 
 [node name="camera" type="Camera" parent="camera_arm"]
 current = true
