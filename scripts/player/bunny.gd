@@ -7,6 +7,8 @@ var snap_vector: Vector3 = Vector3.DOWN
 onready var camera_arm: SpringArm = $camera_arm
 onready var move_state: Node = $states/move
 export var speed := 7.0
+export(float) var gravity = 50.0
+export(float) var jump_speed = 20.0
 export(float) var rotation_speed = 5.0
 
 
@@ -16,6 +18,7 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
   move_state.horizontal_movement()
+  move_state.vertical_movement(delta)
   velocity = move_and_slide_with_snap(
     velocity,
     snap_vector,
