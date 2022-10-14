@@ -4,6 +4,7 @@ class_name MoveState
 
 export(NodePath) onready var bunny = get_node(bunny) as KinematicBody
 export(NodePath) onready var camera_arm = get_node(camera_arm) as SpringArm
+export(NodePath) onready var character = get_node(character) as Spatial
 
 
 func horizontal_movement() -> void:
@@ -32,16 +33,13 @@ func vertical_movement(delta: float) -> void:
   bunny.velocity.y -= bunny.gravity * delta
   
   if is_jump:
-    #  temp
-    jump()
-#    character.action_behavior('Jump')
+    character.action_behavior('Jump')
   if just_landed and bunny.velocity.y < 0:
     bunny.snap_vector = Vector3.DOWN
-#    character.action_behavior('Jump_Land')
-#  if not character.on_action and abs(bunny.velocity.y) > 10.0:
-#    character.action_behavior('Jump_Idle')
-#    bunny.snap_vector = Vector3.ZERO
-
+    character.action_behavior('Jump_Land')
+  if not character.on_action and abs(bunny.velocity.y) > 10.0:
+    character.action_behavior('Jump_Idle')
+    bunny.snap_vector = Vector3.ZERO
 
 
 func jump() -> void:
