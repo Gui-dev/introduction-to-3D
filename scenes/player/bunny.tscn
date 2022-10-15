@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/characters/bunny_with_a_gun/Main_Light.material" type="Material" id=1]
 [ext_resource path="res://assets/characters/bunny_with_a_gun/White.material" type="Material" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scripts/player/move_state.gd" type="Script" id=9]
 [ext_resource path="res://scripts/player/camera_arm.gd" type="Script" id=10]
 [ext_resource path="res://scripts/player/bunny_animator.gd" type="Script" id=11]
+[ext_resource path="res://scripts/player/role_play.gd" type="Script" id=12]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Character_Gun_Cube003"
@@ -4087,7 +4088,7 @@ bones/28/enabled = true
 bones/28/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="character_with_gun/CharacterArmature/Skeleton"]
-transform = Transform( -0.556113, -0.233234, -0.797709, 0.73719, -0.581646, -0.343862, -0.383784, -0.779289, 0.495398, -0.610549, 1.64194, -0.739872 )
+transform = Transform( -0.578497, -0.53607, -0.614793, 0.116996, -0.800454, 0.587866, -0.807251, 0.26815, 0.525778, -0.896076, 0.535238, 0.0737656 )
 bone_name = "Fist.R"
 
 [node name="Gun" type="MeshInstance" parent="character_with_gun/CharacterArmature/Skeleton/BoneAttachment"]
@@ -4151,6 +4152,11 @@ current = true
 script = ExtResource( 9 )
 bunny = NodePath("../..")
 camera_arm = NodePath("../../camera_arm")
+character = NodePath("../../character_with_gun")
+
+[node name="roleplay" type="Node" parent="states"]
+script = ExtResource( 12 )
+bunny = NodePath("../..")
 character = NodePath("../../character_with_gun")
 
 [connection signal="animation_finished" from="character_with_gun/AnimationPlayer" to="character_with_gun" method="_on_animation_finished"]
