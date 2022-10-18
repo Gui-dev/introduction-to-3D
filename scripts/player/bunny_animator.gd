@@ -2,6 +2,7 @@ extends Spatial
 class_name BunnyAnimator
 
 
+var suffix: String = ''
 var on_action: bool = false
 var on_roleplay_action: bool = false
 onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -15,10 +16,18 @@ func animate(velocity: Vector2) -> void:
 
 
 func move_behavior(velocity: Vector2) -> void:
+  suffix = get_weapon_state()
   if velocity != Vector2.ZERO:
-    animation_player.play('Run')
+    animation_player.play('Run' + suffix)
     return    
-  animation_player.play('Idle')
+  animation_player.play('Idle' + suffix)
+
+
+func get_weapon_state() -> String:
+  if bunny.is_weapon_triggered:
+    return '_Gun'
+    
+  return ''
 
 
 func action_behavior(action: String) -> void:
@@ -35,7 +44,10 @@ func roleplay_behavior(action: String) -> void:
 
 
 func _on_animation_finished(anim_name: String) -> void:
-  var action_condition: bool = (anim_name == 'Jump_Land')
+  var action_condition: bool = (
+    anim_name == 'Jump_Land' or
+    anim_name == 'Idle_Shoot'
+  )
   var roleplay_condition: bool = (
     anim_name == 'Duck' or
     anim_name == 'Yes' or

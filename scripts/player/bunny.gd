@@ -4,10 +4,13 @@ class_name Bunny
 
 var velocity: Vector3 = Vector3.ZERO
 var snap_vector: Vector3 = Vector3.DOWN
+var can_shoot: bool = true
+var is_weapon_triggered: bool = false
 onready var character_with_gun: Spatial = $character_with_gun
 onready var camera_arm: SpringArm = $camera_arm
 onready var move_state: Node = $states/move
 onready var roleplay: Node = $states/roleplay
+onready var attack_state: Node = $states/attack
 export var speed := 7.0
 export(float) var gravity = 50.0
 export(float) var jump_speed = 20.0
@@ -27,6 +30,7 @@ func _physics_process(delta: float) -> void:
     Vector3.UP,
     true
   )
+  attack_state.attack()
   roleplay.roleplay_action_handler()
   rotate_character(delta)
   character_with_gun.animate(Vector2(velocity.x, velocity.z))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://assets/characters/bunny_with_a_gun/Main_Light.material" type="Material" id=1]
 [ext_resource path="res://assets/characters/bunny_with_a_gun/White.material" type="Material" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scripts/player/camera_arm.gd" type="Script" id=10]
 [ext_resource path="res://scripts/player/bunny_animator.gd" type="Script" id=11]
 [ext_resource path="res://scripts/player/role_play.gd" type="Script" id=12]
+[ext_resource path="res://scripts/player/attack_state.gd" type="Script" id=13]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Character_Gun_Cube003"
@@ -1103,6 +1104,7 @@ tracks/27/keys = PoolRealArray( 0, 1, 0, 0, 0, -4.1326e-40, -5.68434e-14, -7.270
 [sub_resource type="Animation" id=11]
 resource_name = "Idle_Gun"
 length = 2.08333
+loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("CharacterArmature/Skeleton:Foot.L")
 tracks/0/interp = 1
@@ -1499,6 +1501,20 @@ tracks/27/loop_wrap = true
 tracks/27/imported = false
 tracks/27/enabled = true
 tracks/27/keys = PoolRealArray( 0, 1, 0, 0, 0, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.708333, 1, 0, 0, 0, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1 )
+tracks/28/type = "method"
+tracks/28/path = NodePath("..")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "Jump"
@@ -4088,7 +4104,7 @@ bones/28/enabled = true
 bones/28/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="character_with_gun/CharacterArmature/Skeleton"]
-transform = Transform( -0.578497, -0.53607, -0.614793, 0.116996, -0.800454, 0.587866, -0.807251, 0.26815, 0.525778, -0.896076, 0.535238, 0.0737656 )
+transform = Transform( -0.937388, 0.0505809, 0.344595, 0.309012, -0.335644, 0.889862, 0.160671, 0.940631, 0.298999, -0.740659, 0.857403, 0.299449 )
 bone_name = "Fist.R"
 
 [node name="Gun" type="MeshInstance" parent="character_with_gun/CharacterArmature/Skeleton/BoneAttachment"]
@@ -4159,4 +4175,22 @@ script = ExtResource( 12 )
 bunny = NodePath("../..")
 character = NodePath("../../character_with_gun")
 
+[node name="attack" type="Node" parent="states"]
+script = ExtResource( 13 )
+bunny = NodePath("../..")
+character = NodePath("../../character_with_gun")
+projectile_spawner = NodePath("../../projectile_spawner")
+
+[node name="attack_cooldown_timer" type="Timer" parent="states/attack"]
+one_shot = true
+
+[node name="weapon_triggered_timer" type="Timer" parent="states/attack"]
+wait_time = 6.0
+one_shot = true
+
+[node name="projectile_spawner" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.334, 0.637, 1.072 )
+
 [connection signal="animation_finished" from="character_with_gun/AnimationPlayer" to="character_with_gun" method="_on_animation_finished"]
+[connection signal="timeout" from="states/attack/attack_cooldown_timer" to="states/attack" method="_on_attack_cooldown_timer_timeout"]
+[connection signal="timeout" from="states/attack/weapon_triggered_timer" to="states/attack" method="_on_weapon_triggered_timer_timeout"]
