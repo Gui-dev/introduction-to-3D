@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/static_objects/grass_type_1/Green_Light.material" type="Material" id=1]
 [ext_resource path="res://scenes/player/bunny.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/objects/static_objects/tree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/objects/static_objects/tree_with_fruit.tscn" type="PackedScene" id=4]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 100, 100 )
@@ -26,3 +28,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shape = SubResource( 3 )
 
 [node name="Bunny" parent="." instance=ExtResource( 2 )]
+
+[node name="objects" type="Spatial" parent="."]
+
+[node name="Tree" parent="objects" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0304, 0, 0 )
+
+[node name="TreeWithFruit" parent="objects" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.38959, -0.0497866, -14.2276 )
