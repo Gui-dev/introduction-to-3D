@@ -39,6 +39,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/player/camera_arm.gd"
 }, {
+"base": "Area",
+"class": "Collectable",
+"language": "GDScript",
+"path": "res://scripts/env/collectable.gd"
+}, {
+"base": "RigidBody",
+"class": "CollectableObject",
+"language": "GDScript",
+"path": "res://scripts/env/collectable_object.gd"
+}, {
 "base": "Node",
 "class": "MoveState",
 "language": "GDScript",
@@ -61,6 +71,8 @@ _global_script_class_icons={
 "BunnyAnimator": "",
 "BunnyProjectile": "",
 "CameraArm": "",
+"Collectable": "",
+"CollectableObject": "",
 "MoveState": "",
 "RolePlayState": "",
 "TreeWithFruit": ""
@@ -71,6 +83,10 @@ _global_script_class_icons={
 config/name="introduction-to-3D"
 run/main_scene="res://scenes/management/main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalData="*res://scripts/management/global_data.gd"
 
 [gui]
 
@@ -142,6 +158,11 @@ ui_shoot={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="World"
+3d_physics/layer_2="Collectable"
 
 [physics]
 

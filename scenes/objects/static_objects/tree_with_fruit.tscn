@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/objects/base_object.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/static_objects/tree_with_fruit/Wood.material" type="Material" id=2]
 [ext_resource path="res://assets/static_objects/tree_with_fruit/Green.material" type="Material" id=3]
 [ext_resource path="res://assets/static_objects/tree_with_fruit/Red.material" type="Material" id=4]
 [ext_resource path="res://scripts/env/spawnable_tree_with_fruit.gd" type="Script" id=5]
+[ext_resource path="res://scenes/objects/collectables/tree_fruit.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Tree_Fruit_Cube075"
@@ -53,7 +54,7 @@ script = ExtResource( 5 )
 spawn_gap = 15
 spawn_height = 8
 spawn_amount = 3
-spawnable = null
+spawnable = ExtResource( 6 )
 
 [node name="Tree_Fruit" type="Spatial" parent="object_handler" index="0"]
 

@@ -499,6 +499,20 @@ tracks/27/loop_wrap = true
 tracks/27/imported = false
 tracks/27/enabled = true
 tracks/27/keys = PoolRealArray( 0, 1, 0, 0, 0, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.0666667, 1, 0, 0.0611133, 0.00210893, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.133333, 1, 0, 0.219553, 0.00756407, -3.90301e-40, -5.68434e-14, -7.67404e-27, 1, 1, 1, 1, 0.266667, 1, 0, 0.651414, 0.0223031, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.333333, 1, 0, 0.785095, 0.0267397, -3.90301e-40, -5.68434e-14, -7.67404e-27, 1, 1, 1, 1, 0.4, 1, -5.96046e-08, 0.813305, -0.0683133, -3.90301e-40, -5.68434e-14, -6.86625e-27, 1, 1, 1, 1, 0.466667, 1, -4.17233e-07, 0.817206, -0.63339, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.533333, 1, -7.7486e-07, 0.817893, -1.09527, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.6, 1, -7.7486e-07, 0.817911, -1.1272, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.958333, 1, -7.7486e-07, 0.817911, -1.1272, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1 )
+tracks/28/type = "method"
+tracks/28/path = NodePath("..")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Duck"
@@ -899,6 +913,20 @@ tracks/27/loop_wrap = true
 tracks/27/imported = false
 tracks/27/enabled = true
 tracks/27/keys = PoolRealArray( 0, 1, 0, 0, 0, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.0666667, 1, -5.96046e-08, 0.169277, -0.0673822, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.133333, 1, -1.78814e-07, 0.503213, -0.200308, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.2, 1, -1.78814e-07, 0.695354, -0.276791, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.266667, 1, -1.78814e-07, 0.687478, -0.273656, -3.90301e-40, -5.68434e-14, -6.86625e-27, 1, 1, 1, 1, 0.333333, 1, -1.78814e-07, 0.624343, -0.248525, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.4, 1, -1.78814e-07, 0.515122, -0.205049, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.6, 1, -5.96046e-08, 0.121471, -0.0483524, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.666667, 1, 0, 0.0372562, -0.0148301, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.733333, 1, 0, 0.00370617, -0.00147521, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1, 0.75, 1, 0, 0, 0, -4.1326e-40, -5.68434e-14, -7.27014e-27, 1, 1, 1, 1 )
+tracks/28/type = "method"
+tracks/28/path = NodePath("..")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_physics_process"
+} ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Idle"
@@ -3947,6 +3975,7 @@ radius = 0.519669
 height = 0.336127
 
 [node name="Bunny" type="KinematicBody"]
+collision_mask = 3
 script = ExtResource( 8 )
 
 [node name="character_with_gun" type="Spatial" parent="."]
@@ -4066,7 +4095,7 @@ bones/21/name = "Fist.R"
 bones/21/parent = 20
 bones/21/rest = Transform( 0.999252, -0.0135389, -0.0362166, 0.0126264, 0.9996, -0.0253072, 0.0365448, 0.024831, 0.999023, 3.21276e-08, 0.425347, 5.04116e-08 )
 bones/21/enabled = true
-bones/21/bound_children = [  ]
+bones/21/bound_children = [ NodePath("BoneAttachment") ]
 bones/22/name = "UpperLeg.L"
 bones/22/parent = 2
 bones/22/rest = Transform( 0.999519, 0.0187576, 0.0247012, 0.0309454, -0.656818, -0.753416, 0.00209193, 0.753818, -0.657082, 0.53484, -0.181478, -0.191503 )
@@ -4104,7 +4133,7 @@ bones/28/enabled = true
 bones/28/bound_children = [  ]
 
 [node name="BoneAttachment" type="BoneAttachment" parent="character_with_gun/CharacterArmature/Skeleton"]
-transform = Transform( -0.578497, -0.53607, -0.614793, 0.116997, -0.800454, 0.587866, -0.807251, 0.26815, 0.525779, -0.896076, 0.535238, 0.0737655 )
+transform = Transform( -0.578497, -0.53607, -0.614793, 0.116996, -0.800454, 0.587866, -0.807251, 0.26815, 0.525778, -0.896076, 0.535238, 0.0737656 )
 bone_name = "Fist.R"
 
 [node name="Gun" type="MeshInstance" parent="character_with_gun/CharacterArmature/Skeleton/BoneAttachment"]

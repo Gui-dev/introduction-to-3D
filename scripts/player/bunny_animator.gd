@@ -46,7 +46,8 @@ func roleplay_behavior(action: String) -> void:
 func _on_animation_finished(anim_name: String) -> void:
   var action_condition: bool = (
     anim_name == 'Jump_Land' or
-    anim_name == 'Idle_Shoot'
+    anim_name == 'Idle_Shoot' or
+    anim_name == 'HitReact'
   )
   var roleplay_condition: bool = (
     anim_name == 'Duck' or

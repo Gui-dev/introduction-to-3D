@@ -29,3 +29,10 @@ func spawn_object() -> void:
   var random_x_pposition: Vector2 = spawn_list[random_x_index]
   var random_z_index: int = randi() % spawn_list.size()
   var random_z_pposition: Vector2 = spawn_list[random_z_index]
+  var object_to_spawn = spawnable.instance()
+  get_tree().root.call_deferred('add_child', object_to_spawn)
+  object_to_spawn.translation = Vector3(
+    translation.x + rand_range(random_x_pposition.x, random_x_pposition.y),
+    translation.y + spawn_height,
+    translation.z + rand_range(random_z_pposition.x, random_z_pposition.y)
+  )
