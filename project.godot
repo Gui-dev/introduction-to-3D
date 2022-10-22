@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/env/collectable_object.gd"
 }, {
+"base": "CanvasLayer",
+"class": "Interface",
+"language": "GDScript",
+"path": "res://scripts/management/interface.gd"
+}, {
 "base": "Node",
 "class": "MoveState",
 "language": "GDScript",
@@ -58,6 +63,11 @@ _global_script_classes=[ {
 "class": "RolePlayState",
 "language": "GDScript",
 "path": "res://scripts/player/role_play.gd"
+}, {
+"base": "Spatial",
+"class": "SpatialObject",
+"language": "GDScript",
+"path": "res://scripts/env/spatial_object.gd"
 }, {
 "base": "BaseObject",
 "class": "TreeWithFruit",
@@ -73,8 +83,10 @@ _global_script_class_icons={
 "CameraArm": "",
 "Collectable": "",
 "CollectableObject": "",
+"Interface": "",
 "MoveState": "",
 "RolePlayState": "",
+"SpatialObject": "",
 "TreeWithFruit": ""
 }
 
