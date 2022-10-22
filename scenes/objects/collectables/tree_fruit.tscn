@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/collectables/fruit/Red.material" type="Material" id=1]
 [ext_resource path="res://assets/collectables/fruit/Green_Light.material" type="Material" id=2]
-[ext_resource path="res://scripts/env/collectable.gd" type="Script" id=3]
+[ext_resource path="res://scenes/objects/collectables/collectable_area.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/env/collectable_object.gd" type="Script" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
@@ -34,9 +34,6 @@ surfaces/1 = {
 
 [sub_resource type="SphereShape" id=3]
 radius = 0.333114
-
-[sub_resource type="SphereShape" id=2]
-radius = 0.397378
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -83,20 +80,10 @@ skeleton = NodePath("")
 [node name="collison" type="CollisionShape" parent="."]
 shape = SubResource( 3 )
 
-[node name="collectable_area" type="Area" parent="."]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource( 3 )
-value_type = 5
-collectable_type = "Fruit"
-animation = NodePath("../animation")
-
-[node name="collision" type="CollisionShape" parent="collectable_area"]
-shape = SubResource( 2 )
+[node name="collectable_area" parent="." instance=ExtResource( 3 )]
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
 anims/dissolve = SubResource( 5 )
 
-[connection signal="body_entered" from="collectable_area" to="collectable_area" method="_on_collectable_area_body_entered"]
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]

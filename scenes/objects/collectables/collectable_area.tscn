@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/env/collectable.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.397378
+
+[node name="collectable_area" type="Area"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 1 )
+value_type = 5
+collectable_type = "Fruit"
+animation = NodePath("../animation")
+
+[node name="collision" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_collectable_area_body_entered"]
