@@ -20,6 +20,10 @@ export(float) var jump_speed = 20.0
 export(float) var rotation_speed = 5.0
 
 
+func _ready() -> void:
+  GlobalData.player = self
+
+
 func _process(_delta: float) -> void:
   camera_arm.translation = translation
 

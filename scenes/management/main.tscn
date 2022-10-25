@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/static_objects/grass_type_1/Green_Light.material" type="Material" id=1]
 [ext_resource path="res://scenes/player/bunny.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/fonts/roboto_slab.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scripts/management/interface.gd" type="Script" id=7]
 [ext_resource path="res://scenes/objects/collectables/coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/enemy/crab.tscn" type="PackedScene" id=9]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 100, 100 )
@@ -39,6 +40,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 shape = SubResource( 3 )
 
 [node name="Bunny" parent="." instance=ExtResource( 2 )]
+
+[node name="enemies" type="Spatial" parent="."]
+
+[node name="Crab" parent="enemies" instance=ExtResource( 9 )]
+transform = Transform( -0.999955, 0, 0.0094421, 0, 1, 0, -0.0094421, 0, -0.999955, 2, 0.0311763, 8.45003 )
 
 [node name="objects" type="Spatial" parent="."]
 

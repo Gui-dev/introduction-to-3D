@@ -16,9 +16,9 @@ func _on_projectile_area_body_entered(body: Node) -> void:
   if body is StaticBody:
     body.owner.interact()
     queue_free()
-#  elif body is Enemy:
-#    body.update_health(damage)
-#    queue_free()
+  elif body is Enemy:
+    body.update_health(damage)
+    queue_free()
 
 
 
