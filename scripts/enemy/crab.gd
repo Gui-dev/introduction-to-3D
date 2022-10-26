@@ -7,9 +7,11 @@ var is_alive: bool = true
 var health: float = 20
 var max_health: float = 20
 var damage: int = 5
-var speed: int = 7
+var speed: int = 8
 var gravity: float = 80.0
 var y_direction: float = 0
+var rotation_speed: float = 16
+var distance_threshold: float = 1.5
 onready var crab_texture: Spatial = $Crab
 onready var raycast: RayCast = $raycast
 onready var collision: CollisionShape = $hurtbox/collision
@@ -23,10 +25,27 @@ func _physics_process(delta: float) -> void:
   var move_direction: Vector3 = verify_movement(delta)
   velocity = move_direction * speed
   rotate_enemy(delta)
+  if not is_colliding:
+    crab_texture.move_behavior(Vector3.ZERO)
+    return
+  if can_chase():
+    velocity = move_and_slide(velocity, Vector3.DOWN)
+    crab_texture.move_behavior(velocity)
+    return
+  crab_texture.move_behavior(Vector3.ZERO)
+
+
+func can_chase() -> bool:
+  var distance_to: float = translation.distance_to(GlobalData.player.translation)
+  if distance_threshold < distance_to:
+    return true
+  return false
 
 
 func rotate_enemy(delta: float) -> void:
-  pass
+  if Vector2(velocity.z, velocity.x).length() > 0.2:
+    var look_direction: Vector2 = Vector2(velocity.z, velocity.x) 
+    rotation.y = lerp_angle(rotation.y, look_direction.angle(), delta * rotation_speed)
 
 
 func verify_movement(delta: float) -> Vector3:
